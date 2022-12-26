@@ -11,6 +11,6 @@ export default function App() {
         <StatusBar style="dark" />
         <BottomNavigation />
       </NativeBaseProvider>
-    </NavigationContainer>
+    </NavigationContainer >
   )
 }

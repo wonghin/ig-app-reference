@@ -1,4 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 import { Discover } from '../screens/Discover';
 import { Home } from '../screens/Home';
 import { Profile } from '../screens/Profile';
@@ -10,6 +12,7 @@ const Tab = createBottomTabNavigator();
 export function BottomNavigation() {
     return (
         <Tab.Navigator
+            initialRouteName='Home'
             screenOptions={{
                 headerShown: false
             }}
@@ -22,3 +25,20 @@ export function BottomNavigation() {
         </Tab.Navigator>
     );
 }
+
+
+
+const TopTab = createMaterialTopTabNavigator();
+
+// export function TopNavigation() {
+//     return (
+//         <TopTab.Navigator
+//             screenOptions={{
+
+//             }}
+//         >
+//             <TopTab.Screen name="BottomNavigation" component={BottomNavigation} />
+//             {/* <TopTab.Screen name="Settings" component={SettingsScreen} /> */}
+//         </TopTab.Navigator>
+//     );
+// }
