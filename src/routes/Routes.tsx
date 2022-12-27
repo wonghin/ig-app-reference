@@ -6,8 +6,11 @@ import { Home } from '../screens/Home';
 import { Profile } from '../screens/Profile';
 import { Reels } from '../screens/Reels';
 import { Shop } from '../screens/Shop';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Login } from '../screens/Login';
+import { RootStackParamList } from './RootStackParamList ';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export function BottomNavigation() {
     return (
@@ -28,17 +31,17 @@ export function BottomNavigation() {
 
 
 
-const TopTab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
-// export function TopNavigation() {
-//     return (
-//         <TopTab.Navigator
-//             screenOptions={{
-
-//             }}
-//         >
-//             <TopTab.Screen name="BottomNavigation" component={BottomNavigation} />
-//             {/* <TopTab.Screen name="Settings" component={SettingsScreen} /> */}
-//         </TopTab.Navigator>
-//     );
-// }
+export function StackNavigation() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+        </Stack.Navigator>
+    );
+}

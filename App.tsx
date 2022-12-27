@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { Box, Center, NativeBaseProvider, ScrollView, Text } from 'native-base';
-import { BottomNavigation } from './src/routes/Routes';
+import { BottomNavigation, StackNavigation } from './src/routes/Routes';
 
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     <NavigationContainer>
       <NativeBaseProvider>
         <StatusBar style="dark" />
-        <BottomNavigation />
+        <StackNavigation />
       </NativeBaseProvider>
     </NavigationContainer >
   )

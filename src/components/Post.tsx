@@ -6,6 +6,8 @@ import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+
+const sample = require('../../assets/images/sample.jpg')
 export const Post = () => {
     const marginEdge = 3;
     return (
@@ -13,9 +15,9 @@ export const Post = () => {
             <HStack bg={'white'} pt={4} px={marginEdge} alignItems={'center'} justifyContent={'space-between'}>
                 <HStack>
                     <Box pr={2}>
-                        <Image size={10} borderRadius={100} source={{
-                            uri: "https://wallpaperaccess.com/full/317501.jpg"
-                        }} alt="Alternate Text" />
+                        <Image size={10} borderRadius={100} source={
+                            sample
+                        } alt="Alternate Text" />
                     </Box>
                     <VStack>
                         <Box>Name of user</Box>
@@ -27,12 +29,9 @@ export const Post = () => {
                 </Box>
             </HStack>
             <Center >
-                <Image size={300} alt="fallback text" source={{
-                    uri: "https://-page-icon.png"
-                }} fallbackSource={{
-                    uri: "https://www.w3schools.com/css/img_lights.jpg"
-
-                }} />
+                <Image size={300} alt="fallback text" source={
+                    sample
+                } />
 
             </Center>
 
