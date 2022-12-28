@@ -3,6 +3,8 @@ import React from 'react'
 
 export const Shop = () => {
     return (
-        <Box>Shop</Box>
+        <Box safeArea>
+
+        </Box>
     )
 }

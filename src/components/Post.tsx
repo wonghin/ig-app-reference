@@ -1,15 +1,15 @@
 import { Box, HStack, VStack, Image, Text, Center } from 'native-base'
 import React from 'react'
-import { windowHeight, windowWidth } from '../styles/constants'
+import { marginEdge, windowHeight, windowWidth } from '../styles/constants'
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { sample } from '../../assets/images/images';
 
 
-const sample = require('../../assets/images/sample.jpg')
 export const Post = () => {
-    const marginEdge = 3;
+
     return (
         <VStack borderWidth={0} width={windowWidth} space={2} pb={2} px={marginEdge}>
             <HStack bg={'white'} pt={4} px={marginEdge} alignItems={'center'} justifyContent={'space-between'}>

@@ -1,3 +1,4 @@
+import { MaterialTopTabScreenProps } from "@react-navigation/material-top-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackNavigationProp } from "@react-navigation/stack";
 
@@ -14,5 +15,13 @@ export type RootStackParamList = {
     StackNavigation: undefined
 };
 
+export type RootTopParamList = {
+    PersonalImage: undefined;
+    PersonalReels: undefined;
+    PersonalTags: undefined;
+}
+
 export type NavigationScreenProps = NativeStackScreenProps<RootStackParamList>;
-export type NavigationScreenProps2 = StackNavigationProp<RootStackParamList>
+
+
+export type tapNavigationScreenProps = MaterialTopTabScreenProps<RootTopParamList>
