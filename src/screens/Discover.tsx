@@ -7,13 +7,16 @@ import { SearchItem } from '../components/SearchItem';
 
 export const Discover = () => {
     return (
-        <Box safeAreaTop bg={'white'}>
+        <Box safeAreaTop bg={'white'} flex={1}>
             <ScrollView
                 stickyHeaderIndices={[0]}
                 stickyHeaderHiddenOnScroll={true}
             >
-                <SearchItem />
-                <PostGridExample />
+                <Box px={marginEdge}>
+                    <SearchItem />
+                </Box>
+
+                <PostGridExample numOfCol={3} />
             </ScrollView>
         </Box>
     )

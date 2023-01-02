@@ -4,7 +4,7 @@ import { PostGridExample } from './mocks/PostGridExample'
 export const PersonalReels = () => {
     return (
         <Center bg={'white'}>
-            <PostGridExample />
+            <PostGridExample numOfCol={3} />
         </Center>
     )
 }

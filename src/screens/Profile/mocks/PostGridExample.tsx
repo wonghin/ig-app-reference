@@ -3,19 +3,62 @@ import React, { useEffect } from 'react'
 import { useNumberOfPostStore } from '../../../hooks/useNumberofPostStore'
 import { postStyle } from '../../../styles/constants'
 
-const ImageExample = () => {
+interface Props {
+    numOfCol: number
+}
+
+const ImageExample = (props: Props) => {
     return (
-        <HStack space={postStyle.postGap}>
-            <Divider orientation="vertical" bg={'white'} />
-            <Pressable>
-                {/* pass the isPressed to <Box> */}
-                {({ isPressed }) => {
-                    return <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
-                }}
-            </Pressable>
-            <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={postStyle.imageColor}></Box>
-            <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={postStyle.imageColor}></Box>
-        </HStack>
+        <>
+            {
+
+                props.numOfCol === 3
+                &&
+                <HStack space={postStyle.postGap}>
+                    <Divider orientation="vertical" bg={'white'} />
+                    <Pressable>
+                        {/* pass the isPressed to <Box> */}
+                        {({ isPressed }) => {
+                            return <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
+                        }}
+                    </Pressable>
+                    <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={"black"}></Box>
+                    <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={postStyle.imageColor}></Box>
+                </HStack>
+            }
+            {
+
+                props.numOfCol === 2
+                &&
+                <HStack space={postStyle.postGap}>
+                    <Divider orientation="vertical" bg={'white'} />
+                    <Pressable>
+                        {/* pass the isPressed to <Box> */}
+                        {({ isPressed }) => {
+                            return <Box h={postStyle.imageBlockSize * 3 / 2} w={postStyle.imageBlockSize * 3 / 2} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
+                        }}
+                    </Pressable>
+                    <Box h={postStyle.imageBlockSize * 3 / 2} w={postStyle.imageBlockSize * 3 / 2} bg={postStyle.imageColor}></Box>
+                </HStack>
+            }
+
+            {
+
+                props.numOfCol === 1
+                &&
+                <HStack space={postStyle.postGap}>
+                    <Divider orientation="vertical" bg={'white'} />
+                    <Pressable>
+                        {/* pass the isPressed to <Box> */}
+                        {({ isPressed }) => {
+                            return <Box h={postStyle.imageBlockSize * 3} w={postStyle.imageBlockSize * 3} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
+                        }}
+                    </Pressable>
+                </HStack>
+            }
+
+        </>
+
     )
 }
 
@@ -66,13 +109,13 @@ function Example() {
 }
 
 
-export const PostGridExample = () => {
+export const PostGridExample = (props: Props) => {
     const updateHeight = useNumberOfPostStore(state => state.updateHeight)
 
-    const number = 13
+    const number = 10
 
     useEffect(() => {
-        updateHeight(number * 3)
+        updateHeight(number * props.numOfCol, props.numOfCol)
 
     }, [])
 
@@ -80,7 +123,7 @@ export const PostGridExample = () => {
         <VStack space={postStyle.postGap}>
             {Array.from(Array(number)).map((_, index) => {
                 return (
-                    <ImageExample key={index} />
+                    <ImageExample key={index} numOfCol={props.numOfCol} />
                 )
             })}
         </VStack>

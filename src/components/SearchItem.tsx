@@ -2,10 +2,13 @@ import { Box, Input } from 'native-base'
 import React from 'react'
 import { Feather } from '@expo/vector-icons';
 
+interface Props {
+    width?: number | string
+}
 
 export const SearchItem = () => {
     return (
-        <Box alignItems={'center'} pb={2} bg={'white'} >
+        <Box alignItems={'center'} mb={2} bg={'white'}>
             <Input
 
                 leftElement={
@@ -13,7 +16,7 @@ export const SearchItem = () => {
                         <Feather name="search" size={18} color="gray" />
                     </Box>
                 }
-                placeholder='Search' _input={{ color: 'black', h: 10, bg: 'white' }}
+                placeholder='Search' _input={{ color: 'black', h: 10, }}
             />
         </Box>
     )

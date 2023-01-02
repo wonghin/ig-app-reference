@@ -9,6 +9,7 @@ import { ProfileTabNavigation } from '../../routes/ProfileTab';
 import { sample } from '../../../assets/images/images';
 import { NavigationContainer } from '@react-navigation/native';
 import { useNumberOfPostStore } from '../../hooks/useNumberofPostStore';
+import { useNavBarStyleStore } from '../../hooks/useNavBarStyleStore';
 
 const TopUserBar = () => {
 
@@ -36,6 +37,9 @@ const TopSelfUserBar = () => {
 
 export const Profile = () => {
     const height = useNumberOfPostStore(state => state.height)
+    const isDraged = useNavBarStyleStore(state => state.isDraged)
+    // console.log(isDraged);
+
 
     return (
         <>
@@ -43,6 +47,9 @@ export const Profile = () => {
                 <TopSelfUserBar />
                 <ScrollView bg={'white'}
                     stickyHeaderIndices={[2]}
+                    scrollEnabled
+                // scrollEnabled={isDraged ? true : false}
+                // showsVerticalScrollIndicator={false}
                 >
                     <VStack px={marginEdge} space={3} >
                         <HStack justifyContent={'space-between'} alignItems={'center'} pt={4}>
@@ -82,10 +89,11 @@ export const Profile = () => {
                     <Box my={4}>
                         <IconHorizontalScrollView />
                     </Box>
-
-                    <Box height={height + 52} >
+                    {/* <Box height={height + 52} > */}
+                    <Box h={windowHeight}>
                         <ProfileTabNavigation />
                     </Box>
+
                 </ScrollView>
             </Box>
         </>

@@ -4,11 +4,12 @@ import { iconSize, marginEdge } from '../styles/constants'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SearchItem } from '../components/SearchItem';
+import { PostGridExample } from './Profile/mocks/PostGridExample';
 
 
 const TobSearchBar = () => {
     return (
-        <Box >
+        <Box px={marginEdge}>
             <HStack justifyContent={'space-between'} alignItems={'center'}>
                 <Box _text={{ fontSize: '2xl', fontWeight: 'bold' }}>Shop</Box>
                 <HStack space={4}>
@@ -32,21 +33,24 @@ const TobSearchBar = () => {
 
 const StickyHeader = () => {
     return (
-        <VStack space={5}>
+        <VStack space={1} px={marginEdge}>
             <SearchItem />
-            <Button>Videos</Button>
+            <Button bg={'gray.400'}>Videos</Button>
         </VStack>
     )
 }
 
 export const Shop = () => {
     return (
-        <Box safeArea px={marginEdge}>
+        <Box safeArea bg={'white'}>
             {TobSearchBar()}
             <ScrollView
                 stickyHeaderIndices={[0]}
+                stickyHeaderHiddenOnScroll={true}
+
             >
-                {StickyHeader()}
+                <StickyHeader />
+                <PostGridExample numOfCol={2} />
 
             </ScrollView>
 
