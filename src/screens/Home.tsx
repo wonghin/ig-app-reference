@@ -17,7 +17,7 @@ const TopTitleBar = () => {
         <HStack justifyContent={'space-between'} px={3} pb={2} alignItems={'center'}>
             <Box>
                 <Text fontSize={'2xl'} fontWeight={'bold'}>
-                    Instergram
+                    Instagram
                 </Text>
             </Box>
             <HStack space={6} alignItems={'center'}>
