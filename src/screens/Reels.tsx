@@ -1,35 +1,47 @@
-import { Box, Center, HStack, VStack } from 'native-base'
+import { Box, Center, HStack, VStack, Image, ScrollView, Pressable } from 'native-base'
 import React from 'react'
-import { marginEdge, windowHeight } from '../styles/constants'
+import { IconNameHorizontal } from '../components/IconNameHorizontal'
+import { iconSize, marginEdge, windowHeight, windowWidth } from '../styles/constants'
+import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { sample } from '../../assets/images/images';
+import { ImageBackground, StyleSheet } from 'react-native';
+import { ReelComponent } from '../components/ReelComponent';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+
+
+
+
 
 export const Reels = () => {
+    const tabBarHeight = useBottomTabBarHeight();
     return (
-        <Box safeAreaTop px={marginEdge}>
-            <VStack justifyContent={'space-between'} h={'100%'}>
-                <HStack justifyContent={'space-between'}>
-                    <Box _text={{ fontSize: 'xl' }}>Reels</Box>
-                    <HStack space={4}>
-                        <Box>ICON</Box>
-                        <Box>ICON</Box>
-                    </HStack>
-                </HStack>
-                <HStack justifyContent={'space-between'}>
-                    <VStack flexDirection={'column-reverse'}>
-                        <Box _text={{}}>Text1</Box>
-                        <Box _text={{}}>Text2</Box>
-                        <Box _text={{}}>Text3</Box>
-                        <Box _text={{}}>Text4</Box>
-                        <Box _text={{}}>Text5</Box>
-                    </VStack>
-                    <VStack space={10}>
-                        <Box _text={{}}>Text1</Box>
-                        <Box _text={{}}>Text2</Box>
-                        <Box _text={{}}>Text1</Box>
-                        <Box _text={{}}>Text2</Box>
-                        <Box _text={{}}>Text3</Box>
-                    </VStack>
-                </HStack>
-            </VStack>
+        <Box >
+            <Pressable position={'absolute'} zIndex={1} right={2 * marginEdge}
+                _pressed={{ opacity: '0.5' }}
+                top={windowHeight * 0.10}>
+                <Feather name="camera" size={iconSize} color="black" />
+            </Pressable>
+            <ScrollView
+                pagingEnabled={true}
+                stickyHeaderIndices={[0]}
+            >
+                <Box _text={{ fontSize: '2xl', color: 'white', left: 10, fontWeight: 'bold' }} position={'absolute'} top={windowHeight * 0.1}>
+                    Reels
+                </Box>
+                {/* <Box top={windowHeight * 0.1} left={windowWidth - 100}>
+                    <Feather name="camera" size={24} color="black" />
+                </Box> */}
+                {
+                    Array.from(Array(5)).map((_, index) => {
+                        return (
+                            <ReelComponent key={index} bottomBarHeight={tabBarHeight} />
+                        )
+                    })
+                }
+            </ScrollView>
+
         </Box>
     )
 }

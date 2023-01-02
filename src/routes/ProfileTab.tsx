@@ -3,7 +3,7 @@ import { Box, Center, HStack, Pressable, useColorModeValue, VStack, Image, Text,
 import React from "react";
 import { Animated, ScrollView, StatusBar } from "react-native";
 import { IconHorizontalScrollView } from "../components/IconHorizontalScrollView";
-import { PersonalImage } from "../screens/Profile/PersonalImage";
+import { PersonalPost } from "../screens/Profile/PersonalPosts";
 import { PersonalReels } from "../screens/Profile/PersonalReels";
 import { PersonalTags } from "../screens/Profile/PersonalTags";
 import { iconSize, marginEdge, windowHeight, windowWidth } from "../styles/constants";
@@ -102,7 +102,7 @@ const ProfileTab = createMaterialTopTabNavigator<RootTopParamList>();
 export function ProfileTabNavigation() {
     return (
         <ProfileTab.Navigator
-            initialRouteName='PersonalImage'
+            initialRouteName='PersonalPost'
             screenOptions={{
                 tabBarStyle: {
                     shadowOpacity: 0.3,
@@ -118,7 +118,7 @@ export function ProfileTabNavigation() {
                 tabBarIconStyle: { width: '100%', height: '100%' },
             }}
         >
-            <ProfileTab.Screen name="PersonalImage"
+            <ProfileTab.Screen name="PersonalPost"
                 options={{
                     tabBarIcon: ({ focused }) =>
                         focused ? (
@@ -128,7 +128,7 @@ export function ProfileTabNavigation() {
                         ),
 
                 }}
-                component={PersonalImage} />
+                component={PersonalPost} />
             <ProfileTab.Screen name="PersonalReels"
                 options={{
                     tabBarIcon: ({ focused }) =>

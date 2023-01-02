@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { Discover } from '../screens/Discover';
@@ -14,7 +14,7 @@ import { Octicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { PersonalImage } from '../screens/Profile/PersonalImage';
+import { PersonalPost } from '../screens/Profile/PersonalPosts';
 import { PersonalReels } from '../screens/Profile/PersonalReels';
 import { PersonalTags } from '../screens/Profile/PersonalTags';
 import { iconSize } from '../styles/constants';
@@ -28,43 +28,44 @@ export function BottomNavigation() {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                // tabBarStyle: { height: 200 },
+                // tabBarStyle: { height: 100 },
             }}
         >
             <Tab.Screen
                 options={{
-                    tabBarIcon: () => (
-                        <Entypo name="home" size={iconSize} color="black" />
+                    tabBarIcon: ({ focused }) => (
+                        focused ? <Entypo name="home" size={iconSize} color="black" />
+                            : <Entypo name="home" size={iconSize} color="gray" />
                     ),
 
                 }}
                 name="Home" component={Home} />
             <Tab.Screen
                 options={{
-                    tabBarIcon: () => (
-                        <Feather name="search" size={iconSize} color="black" />
-                    ),
+                    tabBarIcon: ({ focused }) => (
+                        focused ? <Feather name="search" size={30} color="black" />
+                            : <Feather name="search" size={iconSize} color="gray" />),
                 }}
                 name="Discover" component={Discover} />
             <Tab.Screen
                 options={{
-                    tabBarIcon: () => (
-                        <Octicons name="video" size={iconSize} color="black" />
-                    ),
+                    tabBarIcon: ({ focused }) => (
+                        focused ? <Octicons name="video" size={30} color="black" />
+                            : <Octicons name="video" size={iconSize} color="gray" />),
                 }}
                 name="Reels" component={Reels} />
             <Tab.Screen
                 options={{
-                    tabBarIcon: () => (
-                        <MaterialCommunityIcons name="shopping-outline" size={iconSize} color="black" />
-                    ),
+                    tabBarIcon: ({ focused }) => (
+                        focused ? <MaterialCommunityIcons name="shopping-outline" size={30} color="black" />
+                            : <MaterialCommunityIcons name="shopping-outline" size={iconSize} color="gray" />),
                 }}
                 name="Shop" component={Shop} />
             <Tab.Screen
                 options={{
-                    tabBarIcon: () => (
-                        <MaterialIcons name="insert-emoticon" size={iconSize} color="black" />
-                    ),
+                    tabBarIcon: ({ focused }) => (
+                        focused ? <MaterialIcons name="insert-emoticon" size={30} color="black" />
+                            : <MaterialIcons name="insert-emoticon" size={iconSize} color="gray" />),
                 }}
                 name="Profile" component={Profile} />
         </Tab.Navigator>
@@ -93,7 +94,7 @@ export function StackNavigation() {
 // export function ProfileTabNavigation() {
 //     return (
 //         <ProfileTab.Navigator>
-//             <ProfileTab.Screen name="PersonalImage" component={PersonalImage} />
+//             <ProfileTab.Screen name="PersonalPost" component={PersonalPost} />
 //             <ProfileTab.Screen name="PersonalReels" component={PersonalReels} />
 //             <ProfileTab.Screen name="PersonalTags" component={PersonalTags} />
 

@@ -8,10 +8,10 @@ export const imageColor = 'gray.200'
 export const postGap = 0.49
 
 export const postStyle = {
-    marginEdge: 3,
-    iconSize: 28,
+    marginEdge: marginEdge,
+    iconSize: iconSize,
     imageBlockSize: windowWidth / 3,
-    imageColor: 'gray.200',
-    postGap: 0.49
+    imageColor: imageColor,
+    postGap: postGap
 
 }

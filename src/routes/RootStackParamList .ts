@@ -16,7 +16,7 @@ export type RootStackParamList = {
 };
 
 export type RootTopParamList = {
-    PersonalImage: undefined;
+    PersonalPost: undefined;
     PersonalReels: undefined;
     PersonalTags: undefined;
 }

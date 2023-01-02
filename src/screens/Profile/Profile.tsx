@@ -41,7 +41,9 @@ export const Profile = () => {
         <>
             <Box safeArea bg={'white'}>
                 <TopSelfUserBar />
-                <ScrollView bg={'white'}>
+                <ScrollView bg={'white'}
+                    stickyHeaderIndices={[2]}
+                >
                     <VStack px={marginEdge} space={3} >
                         <HStack justifyContent={'space-between'} alignItems={'center'} pt={4}>
                             <Box borderWidth={4} borderRadius={100} borderColor={'black'}>
@@ -75,14 +77,14 @@ export const Profile = () => {
                         <Box>
                             <Button bg={'black'}>Edit Profile</Button>
                         </Box>
-
                     </VStack>
+
                     <Box my={4}>
                         <IconHorizontalScrollView />
                     </Box>
+
                     <Box height={height + 52} >
                         <ProfileTabNavigation />
-
                     </Box>
                 </ScrollView>
             </Box>
