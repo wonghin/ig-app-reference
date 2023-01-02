@@ -19,7 +19,7 @@ export const Reels = () => {
     return (
         <Box >
             <Pressable position={'absolute'} zIndex={1} right={2 * marginEdge}
-                _pressed={{ opacity: '0.5' }}
+                _pressed={{ opacity: '0.5/.' }}
                 top={windowHeight * 0.10}>
                 <Feather name="camera" size={iconSize} color="black" />
             </Pressable>
@@ -30,9 +30,6 @@ export const Reels = () => {
                 <Box _text={{ fontSize: '2xl', color: 'white', left: 10, fontWeight: 'bold' }} position={'absolute'} top={windowHeight * 0.1}>
                     Reels
                 </Box>
-                {/* <Box top={windowHeight * 0.1} left={windowWidth - 100}>
-                    <Feather name="camera" size={24} color="black" />
-                </Box> */}
                 {
                     Array.from(Array(5)).map((_, index) => {
                         return (
