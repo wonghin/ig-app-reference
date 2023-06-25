@@ -1,102 +1,125 @@
-import { Box, HStack, ScrollView, Image, VStack, Center, Text, Button } from 'native-base'
-import React from 'react'
-import { marginEdge, windowHeight, iconSize, windowWidth } from '../../styles/constants'
-import { Feather } from '@expo/vector-icons';
-import { Octicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Box, HStack, ScrollView, Button } from 'native-base'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { windowWidth } from '../../styles/constants'
+
 import { IconHorizontalScrollView } from '../../components/IconHorizontalScrollView';
-import { ProfileTabNavigation } from '../../routes/ProfileTab';
-import { sample } from '../../../assets/images/images';
-import { NavigationContainer } from '@react-navigation/native';
-import { useNumberOfPostStore } from '../../hooks/useNumberofPostStore';
-import { useNavBarStyleStore } from '../../hooks/useNavBarStyleStore';
 
-const TopUserBar = () => {
+import { PersonalPost } from './PersonalPosts';
 
+import { ProfileHeader } from './ProfileHeader';
+import { TopSelfUserBar } from '../../components/TopSelfUserBar';
+import { PersonalReels } from './PersonalReels';
+import { PersonalTags } from './PersonalTags';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+
+interface TabButton {
+    text: string
+    handler: () => {}
 }
 
-const TopSelfUserBar = () => {
+const TabButton = ({ text, handler, isFocus = false }: { text: string, handler: () => {}, isFocus: boolean }) => {
     return (
-        <>
-            <HStack justifyContent={'space-between'} px={marginEdge} space={1} alignItems={'center'} pb={1}>
-                <HStack alignItems={'center'} space={2}>
-                    <Box><Feather name="lock" size={15} color="black" /></Box>
-                    <Box _text={{ fontSize: 'xl' }}>Name of User</Box>
-                    <Box>
-                        <Center _text={{ fontSize: '12' }} borderRadius={100} bg="red.400" size={5}>5</Center>
-                    </Box>
-                </HStack>
-                <HStack space={5} alignItems={'center'}>
-                    <Box><Octicons name="diff-added" size={iconSize} color="black" /></Box>
-                    <Box><FontAwesome5 name="bars" size={24} color="black" /></Box>
-                </HStack>
-            </HStack>
-        </>
+        <Button
+            variant={'unstyled'}
+            borderRadius={0}
+            borderBottomColor={isFocus ? 'black' : 'white'}
+            borderBottomWidth={1}
+            // borderRightWidth={1}
+            bg={'white'}
+            w={windowWidth / 3}
+            onPress={handler}
+        >
+            {text}
+        </Button>
     )
 }
 
 export const Profile = () => {
-    const height = useNumberOfPostStore(state => state.height)
-    const isDraged = useNavBarStyleStore(state => state.isDraged)
-    // console.log(isDraged);
+    const [tab, setTab] = useState(0)
+    const scrollHorizontalRef = useRef({ x: 0, y: 0, animated: true });
+    const scrollVerticalRef = useRef({ x: 0, y: 0, animated: true });
+    const ref = useRef(null)
+
+    const tabHandler = (tab: number, x: number) => {
+        //@ts-ignore
+        scrollHorizontalRef.current.scrollTo({ x: x, animated: true });
+        //@ts-ignore
+        scrollVerticalRef.current.scrollTo({ x: 0, y: 0, animated: true })
+        setTab(tab)
+
+        // ref.current.measure((x, y, width, height, pageX, pageY) => {
+        //     scrollVerticalRef.current.scrollTo({ x: 0, y: pageY, animated: true });
+        // });
+    }
+
+
+
+    const tabButton = useMemo(
+        () =>
+            [
+                {
+                    text: 'Post',
+                    handler: async () => tabHandler(0, 0)
+                },
+                {
+                    text: 'Reel',
+                    handler: async () => tabHandler(1, windowWidth)
+                },
+                {
+                    text: 'Tag',
+                    handler: async () => tabHandler(2, windowWidth * 2)
+                },
+            ], []
+
+    )
 
 
     return (
-        <>
-            <Box safeArea bg={'white'}>
-                <TopSelfUserBar />
-                <ScrollView bg={'white'}
-                    stickyHeaderIndices={[2]}
-                    scrollEnabled
-                // scrollEnabled={isDraged ? true : false}
-                // showsVerticalScrollIndicator={false}
+        <Box safeAreaTop bg={'white'} flex={1}>
+            <TopSelfUserBar />
+            <ScrollView bg={'white'}
+                stickyHeaderIndices={[2]}
+                scrollEnabled
+                ref={scrollVerticalRef}
+                contentContainerStyle={{}}
+                scrollIndicatorInsets={{
+                    top: 0, left: 0, bottom: 0, right: 0
+                }}
+            // showsVerticalScrollIndicator={false}
+            >
+                <ProfileHeader />
+                <Box my={4} >
+                    <IconHorizontalScrollView />
+                </Box>
+                <HStack justifyContent={'space-evenly'} ref={ref}>
+                    {tabButton.map((value, index) =>
+                        <TabButton key={index} text={value.text} handler={value.handler} isFocus={index === tab} />
+                    )}
+                </HStack>
+                <ScrollView
+                    pagingEnabled={true}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    onMomentumScrollEnd={(event) => {
+                        let value = event.nativeEvent.contentOffset.x
+                        if (value === 0) {
+                            setTab(0)
+                        } else if (value === windowWidth) {
+                            setTab(1)
+                        } else if (value === windowWidth * 2) {
+                            setTab(2)
+                        }
+                    }}
+                    ref={scrollHorizontalRef}
+
                 >
-                    <VStack px={marginEdge} space={3} >
-                        <HStack justifyContent={'space-between'} alignItems={'center'} pt={4}>
-                            <Box borderWidth={4} borderRadius={100} borderColor={'black'}>
-                                <Image size={windowHeight * 0.08}
-                                    borderRadius={100}
-                                    borderColor={'white'}
-                                    borderWidth={3}
-                                    source={sample} alt="Alternate Text" />
-                            </Box>
-                            <HStack space={6} mr={7}>
-                                <VStack alignItems={'center'}>
-                                    <Box>2</Box>
-                                    <Box>Posts</Box>
-                                </VStack>
-                                <VStack alignItems={'center'}>
-                                    <Box>500</Box>
-                                    <Box>Followers</Box>
-                                </VStack>
-                                <VStack alignItems={'center'}>
-                                    <Box>500</Box>
-                                    <Box>Following</Box>
-                                </VStack>
-                            </HStack>
-                        </HStack>
-                        <VStack >
-                            <Text>User name</Text>
-                            <Box mt={-1} _text={{}}>
-                                some dummy text
-                            </Box>
-                        </VStack>
-                        <Box>
-                            <Button bg={'black'}>Edit Profile</Button>
-                        </Box>
-                    </VStack>
-
-                    <Box my={4}>
-                        <IconHorizontalScrollView />
-                    </Box>
-                    {/* <Box height={height + 52} > */}
-                    <Box h={windowHeight}>
-                        <ProfileTabNavigation />
-                    </Box>
-
+                    <PersonalPost />
+                    <PersonalReels />
+                    <PersonalTags />
                 </ScrollView>
-            </Box>
-        </>
+
+            </ScrollView >
+        </Box >
 
 
 

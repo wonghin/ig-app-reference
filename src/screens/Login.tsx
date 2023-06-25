@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
-import { Box, Input, VStack, ScrollView, Button, Center, Divider, HStack, Text, Flex, Heading } from 'native-base'
+import { Box, Input, VStack, Button, HStack, Text, } from 'native-base'
 import React from 'react'
-import { Keyboard, TouchableWithoutFeedback, View } from 'react-native'
+import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { NavigationScreenProps } from '../routes/RootStackParamList '
 import { marginEdge } from '../styles/constants'
 
@@ -42,7 +41,6 @@ export const Login = ({ navigation }: NavigationScreenProps) => {
                             <HStack alignItems={'center'}>
                                 <Text color={'gray.500'}>Don't have an account?</Text>
                                 <Button variant={'link'} _text={{ fontWeight: 'bold', }}>Sign Up</Button>
-                                <Text>.</Text>
                             </HStack>
                         </VStack>
                     </VStack>

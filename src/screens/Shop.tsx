@@ -33,7 +33,7 @@ const TobSearchBar = () => {
 
 const StickyHeader = () => {
     return (
-        <VStack space={1} px={marginEdge}>
+        <VStack space={1} px={marginEdge} mb={2}>
             <SearchItem />
             <Button bg={'gray.400'}>Videos</Button>
         </VStack>

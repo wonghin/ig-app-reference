@@ -1,10 +1,9 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { postStyle } from '../styles/constants'
 
 interface NavBarStyle {
     BottomBarHeight: number
     setBottomBarHeight: (newHeight: number) => void
-
 
     isDraged: boolean
     setIsDraged: (newDraged: boolean) => void

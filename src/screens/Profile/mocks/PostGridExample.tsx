@@ -1,7 +1,7 @@
 import { Badge, Box, Divider, HStack, Pressable, Spacer, VStack, Text, Flex } from 'native-base'
 import React, { useEffect } from 'react'
 import { useNumberOfPostStore } from '../../../hooks/useNumberofPostStore'
-import { postStyle } from '../../../styles/constants'
+import { postStyle, windowWidth } from '../../../styles/constants'
 
 interface Props {
     numOfCol: number
@@ -11,19 +11,31 @@ const ImageExample = (props: Props) => {
     return (
         <>
             {
-
                 props.numOfCol === 3
                 &&
-                <HStack space={postStyle.postGap}>
-                    <Divider orientation="vertical" bg={'white'} />
+                <HStack space={postStyle.postGap} w={windowWidth}>
+                    <Divider orientation="vertical" bg={'white'} w={0.1} />
                     <Pressable>
                         {/* pass the isPressed to <Box> */}
                         {({ isPressed }) => {
                             return <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
                         }}
                     </Pressable>
-                    <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={"black"}></Box>
-                    <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={postStyle.imageColor}></Box>
+                    <Pressable>
+                        {/* pass the isPressed to <Box> */}
+                        {({ isPressed }) => {
+                            return <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
+                        }}
+                    </Pressable>
+                    <Pressable>
+                        {/* pass the isPressed to <Box> */}
+                        {({ isPressed }) => {
+                            return <Box h={postStyle.imageBlockSize} w={postStyle.imageBlockSize} bg={isPressed ? 'red.500' : postStyle.imageColor}></Box>
+                        }}
+                    </Pressable>
+
+
+
                 </HStack>
             }
             {

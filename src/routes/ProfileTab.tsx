@@ -1,14 +1,10 @@
-import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
-import { Box, Center, HStack, Pressable, useColorModeValue, VStack, Image, Text, Button } from "native-base";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import React from "react";
-import { Animated, ScrollView, StatusBar } from "react-native";
-import { IconHorizontalScrollView } from "../components/IconHorizontalScrollView";
 import { PersonalPost } from "../screens/Profile/PersonalPosts";
 import { PersonalReels } from "../screens/Profile/PersonalReels";
 import { PersonalTags } from "../screens/Profile/PersonalTags";
-import { iconSize, marginEdge, windowHeight, windowWidth } from "../styles/constants";
+import { iconSize, } from "../styles/constants";
 import { RootTopParamList } from "./RootStackParamList ";
-import { Feather } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -102,21 +98,24 @@ const ProfileTab = createMaterialTopTabNavigator<RootTopParamList>();
 export function ProfileTabNavigation() {
     return (
         <ProfileTab.Navigator
+
             initialRouteName='PersonalPost'
-            screenOptions={{
-                tabBarStyle: {
-                    shadowOpacity: 0.3,
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowRadius: 3,
+            screenOptions={
+
+                {
+                    tabBarStyle: {
+                        shadowOpacity: 0.3,
+                        shadowOffset: { width: 0, height: 4 },
+                        shadowRadius: 3,
+                    },
+                    tabBarIndicatorStyle: {
+                        backgroundColor: 'black',
+                    },
+                    tabBarShowLabel: false,
+                    tabBarIconStyle: { width: '100%', height: '100%' },
 
 
-                },
-                tabBarIndicatorStyle: {
-                    backgroundColor: 'black',
-                },
-                tabBarShowLabel: false,
-                tabBarIconStyle: { width: '100%', height: '100%' },
-            }}
+                }}
         >
             <ProfileTab.Screen name="PersonalPost"
                 options={{

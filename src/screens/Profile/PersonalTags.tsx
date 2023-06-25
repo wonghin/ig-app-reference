@@ -1,11 +1,10 @@
 import { Box, Center, ScrollView } from 'native-base'
 import React from 'react'
 import { PostGridExample } from './mocks/PostGridExample'
+import { PostGrid } from './mocks/PostGrid'
 
 export const PersonalTags = () => {
     return (
-        <Center bg={'white'}>
-            <PostGridExample numOfCol={3} />
-        </Center>
+        <PostGrid num={30} />
     )
 }
