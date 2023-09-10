@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { sample } from '../../assets/images/images';
-import { LikeButton } from './LikeButton';
+import { LikeButton } from './button/LikeButton';
 
 
 export const Post = () => {
@@ -44,7 +44,7 @@ export const Post = () => {
             </HStack>
 
             <HStack justifyContent={'space-between'}>
-                <HStack space={5}>
+                <HStack space={5} alignItems={'center'}>
                     <LikeButton state={false} />
                     <Ionicons name="chatbubble-outline" size={24} color="black" />
                     <Ionicons name="ios-arrow-redo-outline" size={24} color="black" />

@@ -2,8 +2,7 @@ import { Box, Center, HStack, ScrollView, Text, Image, VStack } from 'native-bas
 import React, { Fragment } from 'react'
 import { Post } from '../components/Post'
 import { windowHeight } from '../styles/constants'
-import { Ionicons } from '@expo/vector-icons';
-import { Octicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign, Octicons } from '@expo/vector-icons';
 import { IconHorizontalScrollView } from '../components/IconHorizontalScrollView';
 
 type Props = {}
@@ -22,7 +21,7 @@ const TopTitleBar = () => {
             </Box>
             <HStack space={6} alignItems={'center'}>
                 <Octicons name="diff-added" size={iconSize} color="black" />
-                <Ionicons name="md-heart-outline" size={iconSize} color="black" />
+                <AntDesign name="hearto" size={iconSize} color="black" />
                 <Ionicons name="md-chatbubble-ellipses-outline" size={iconSize} color="black" />
             </HStack>
 
