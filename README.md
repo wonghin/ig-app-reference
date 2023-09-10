@@ -4,11 +4,13 @@
 
 
 ## App preview
-
+<div style='display: flex; '>
 <img src="screenshot/login.png" alt="Image" width="250">
 <img src="screenshot/home.png" alt="Image" width="250">
 <img src="screenshot/reel.png" alt="Image" width="250">
 <img src="screenshot/profile.png" alt="Image" width="250">
+</div>
+
 
 <br></br>
 
