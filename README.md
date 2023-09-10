@@ -114,4 +114,4 @@ ig_project
 ```
 ## License
 
-All the code available under the MIT + Apache 2.0. licenses. See [LICENSE](LICENSE).
+All the code available under the MIT. See [LICENSE](LICENSE).
